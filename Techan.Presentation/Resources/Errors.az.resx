@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AlreadyExistException" xml:space="preserve">
+    <value>Bu məlumat artıq mövcuddur</value>
+  </data>
+  <data name="BlockedUser" xml:space="preserve">
+    <value>İstifadəçi bloklanıb,zəhmət olmasa 10 dəqiqə sonra yenidən yoxlayın.</value>
+  </data>
+  <data name="ConcurrencyFailure" xml:space="preserve">
+    <value>Uyğunlaşma xətası baş verdi.</value>
+  </data>
+  <data name="DefaultError" xml:space="preserve">
+    <value>Naməlum xəta baş verdi.</value>
+  </data>
+  <data name="DuplicateEmail" xml:space="preserve">
+    <value>'{0}' email artıq istifadə olunur.</value>
+  </data>
+  <data name="DuplicateRoleName" xml:space="preserve">
+    <value>'{0}' rol artıq mövcuddur.</value>
+  </data>
+  <data name="DuplicateUserName" xml:space="preserve">
+    <value>'{0}' istifadəçi adı artıq götürülüb.</value>
+  </data>
+  <data name="EmptyBasketException" xml:space="preserve">
+    <value>Səbətiniz boşdur</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>'{0}' email etibarsızdır.</value>
+  </data>
+  <data name="InvalidInputException" xml:space="preserve">
+    <value>Gözlənilməz xəta baş verdi yenidən sınayın.</value>
+  </data>
+  <data name="InvalidPaymentType" xml:space="preserve">
+    <value>Ödəniş üsulu seçin.</value>
+  </data>
+  <data name="InvalidRoleName" xml:space="preserve">
+    <value>'{0}' rol etibarsızdır.</value>
+  </data>
+  <data name="InvalidToken" xml:space="preserve">
+    <value>Token etibarsızdır.</value>
+  </data>
+  <data name="InvalidUserName" xml:space="preserve">
+    <value>'{0}' istifadəçi adı etibarsızdır.</value>
+  </data>
+  <data name="LoginAlreadyAssociated" xml:space="preserve">
+    <value>Bu giriş artıq başqa bir istifadəçi ilə əlaqələndirilib.</value>
+  </data>
+  <data name="NotFoundException" xml:space="preserve">
+    <value>Məlumat tapılmadı</value>
+  </data>
+  <data name="PasswordMismatch" xml:space="preserve">
+    <value>Şifrə yanlışdır.</value>
+  </data>
+  <data name="PasswordRequiresDigit" xml:space="preserve">
+    <value>Şifrədə ən azı bir rəqəm ('0'-'9') istifadə olunmalıdır.</value>
+  </data>
+  <data name="PasswordRequiresLower" xml:space="preserve">
+    <value>Şifrə ən azı bir kiçik hərf ('a'-'z') içerməlidir.</value>
+  </data>
+  <data name="PasswordRequiresNonAlphanumeric" xml:space="preserve">
+    <value>Şifrə ən azı bir qeyri-alfanumerik simvol içerməlidir.</value>
+  </data>
+  <data name="PasswordRequiresUniqueChars" xml:space="preserve">
+    <value>Şifrədə ən azı {0} unikal simvol istifadə olunmalıdır.</value>
+  </data>
+  <data name="PasswordRequiresUpper" xml:space="preserve">
+    <value>Şifrədə ən azı bir böyük hərf ('A'-'Z') istifadə olunmalıdır.</value>
+  </data>
+  <data name="PasswordTooShort" xml:space="preserve">
+    <value>Şifrə ən azı {0} simvol uzunluğunda olmalıdır.</value>
+  </data>
+  <data name="UnAuthorizedException" xml:space="preserve">
+    <value>Sizin bura daxil olmaq üçün icazəniz yoxdur</value>
+  </data>
+  <data name="UnconfirmedEmail" xml:space="preserve">
+    <value>Hesaba daxil olmaq üçün mail hesabınızı təsdiqləməlisiniz. Təsdiqləmə maili yenidən göndərilmişdir.</value>
+  </data>
+  <data name="UserAlreadyHasPassword" xml:space="preserve">
+    <value>İstifadəçinin artıq bir şifrəsi var.</value>
+  </data>
+  <data name="UserAlreadyInRole" xml:space="preserve">
+    <value>İstifadəçi artıq '{0}' rolundadır.</value>
+  </data>
+  <data name="UserLockoutNotEnabled" xml:space="preserve">
+    <value>İstifadəçi üçün kilidləmə aktiv deyil.</value>
+  </data>
+  <data name="UserNotInRole" xml:space="preserve">
+    <value>İstifadəçi '{0}' rolunda deyil.</value>
+  </data>
+  <data name="InvalidCredentials" xml:space="preserve">
+    <value>İstifadəçi adı və ya parol yanlışdır.</value>
+  </data>
+  <data name="RecoveryCodeRedemptionFailed" xml:space="preserve">
+    <value>Qurtarma kodunun geri alınması baş tutmadı.</value>
+  </data>
+</root>

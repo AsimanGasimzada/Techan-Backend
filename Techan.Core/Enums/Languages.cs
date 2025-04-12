@@ -3,6 +3,6 @@
 public enum Languages
 {
     Azerbaijan = 1,
-    English,
-    Russian
+    English = 2,
+    Russian = 3
 }

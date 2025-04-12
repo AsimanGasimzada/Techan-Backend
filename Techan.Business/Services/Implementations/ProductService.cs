@@ -13,32 +13,32 @@ internal class ProductService : IProductService
         _mapper = mapper;
     }
 
-    public Task<bool> CreateAsync(ProductCreateDto dto)
+    public Task<ResultDto> CreateAsync(ProductCreateDto dto)
     {
         throw new NotImplementedException();
     }
 
-    public Task DeleteAsync(int id)
+    public Task<ResultDto> DeleteAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<List<ProductGetDto>> GetAllAsync(Languages language = Languages.Azerbaijan)
+    public Task<ResultDto<List<ProductGetDto>>> GetAllAsync(Languages language = Languages.Azerbaijan)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ProductGetDto> GetAsync(int id, Languages language = Languages.Azerbaijan)
+    public Task<ResultDto<ProductGetDto>> GetAsync(int id, Languages language = Languages.Azerbaijan)
     {
         throw new NotImplementedException();
     }
 
-    public Task<ProductUpdateDto> GetUpdatedDtoAsync(int id)
+    public Task<ResultDto<ProductUpdateDto>> GetUpdatedDtoAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<bool> UpdateAsync(ProductUpdateDto dto)
+    public Task<ResultDto> UpdateAsync(ProductUpdateDto dto)
     {
         throw new NotImplementedException();
     }

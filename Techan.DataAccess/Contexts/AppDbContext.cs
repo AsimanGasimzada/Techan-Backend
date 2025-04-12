@@ -1,14 +1,26 @@
-﻿namespace Techan.DataAccess.Contexts;
+﻿using Techan.DataAccess.DataInitalizers;
+using Techan.DataAccess.Interceptors;
+
+namespace Techan.DataAccess.Contexts;
 internal class AppDbContext : DbContext
 {
-    public AppDbContext(DbContextOptions options) : base(options)
+    private readonly BaseAuditableInterceptor _interceptor;
+    public AppDbContext(DbContextOptions options, BaseAuditableInterceptor interceptor) : base(options)
     {
+        _interceptor = interceptor;
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+        modelBuilder.AddSeedData();
         base.OnModelCreating(modelBuilder);
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.AddInterceptors(_interceptor);
+        base.OnConfiguring(optionsBuilder);
     }
 
     public required DbSet<Product> Products { get; set; }

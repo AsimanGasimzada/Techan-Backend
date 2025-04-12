@@ -1,10 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Techan.DataAccess.Contexts;
+using Techan.DataAccess.Interceptors;
+using Techan.DataAccess.Localizers;
 using Techan.DataAccess.Repositories.Abstractions;
-using Techan.DataAccess.Repositories.Abstractions.Generic;
 using Techan.DataAccess.Repositories.Implementations;
-using Techan.DataAccess.Repositories.Implementations.Generic;
+
 
 namespace Techan.DataAccess.ServiceRegistrations;
 public static class DataAccessServiceRegistration
@@ -14,9 +15,26 @@ public static class DataAccessServiceRegistration
         services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("Default")));
 
+        services.AddScoped<BaseAuditableInterceptor>();
+
+        _addRepositories(services);
+        _addLocalizers(services);
+
+        return services;
+    }
+
+    private static void _addRepositories(IServiceCollection services)
+    {
+
         //services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
         services.AddScoped<IProductRepository, ProductRepository>();
-        return services;
+        services.AddScoped<IBrandRepository, BrandRepository>();
+    }
+
+    private static void _addLocalizers(IServiceCollection services)
+    {
+
+        services.AddTransient<ErrorLocalizer>();
     }
 }
