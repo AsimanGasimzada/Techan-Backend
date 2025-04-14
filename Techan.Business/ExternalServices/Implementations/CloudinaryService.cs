@@ -9,13 +9,13 @@ namespace Techan.Business.ExternalServices.Implementations;
 internal class CloudinaryService : ICloudinaryService
 {
     private readonly IConfiguration _configuration;
-    private readonly CloudinaryOptionsDto _optionsDto;
+    private readonly CloudinaryOptionDto _optionsDto;
     private readonly Cloudinary _cloudinary = null!;
 
     public CloudinaryService(IConfiguration configuration)
     {
         _configuration = configuration;
-        _optionsDto = _configuration.GetSection("CloudinarySettings").Get<CloudinaryOptionsDto>() ?? new();
+        _optionsDto = _configuration.GetSection("CloudinarySettings").Get<CloudinaryOptionDto>() ?? new();
 
         var myAccount = new Account { ApiKey = _optionsDto.APIKey, ApiSecret = _optionsDto.APISecret, Cloud = _optionsDto.CloudName };
 

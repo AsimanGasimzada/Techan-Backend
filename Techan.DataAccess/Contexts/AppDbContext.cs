@@ -1,8 +1,9 @@
-﻿using Techan.DataAccess.DataInitalizers;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Techan.DataAccess.DataInitalizers;
 using Techan.DataAccess.Interceptors;
 
 namespace Techan.DataAccess.Contexts;
-internal class AppDbContext : DbContext
+internal class AppDbContext : IdentityDbContext<AppUser>
 {
     private readonly BaseAuditableInterceptor _interceptor;
     public AppDbContext(DbContextOptions options, BaseAuditableInterceptor interceptor) : base(options)

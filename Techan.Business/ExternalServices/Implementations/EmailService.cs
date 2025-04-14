@@ -9,12 +9,12 @@ namespace Techan.Business.ExternalServices.Implementations;
 internal class EmailService : IEmailService
 {
     private readonly IConfiguration _configuration;
-    private readonly MailKitConfigurationDto _configurationDto;
+    private readonly MailKitOptionDto _configurationDto;
 
     public EmailService(IConfiguration configuration)
     {
         _configuration = configuration;
-        _configurationDto = _configuration.GetSection("MailkitOptions").Get<MailKitConfigurationDto>() ?? new();
+        _configurationDto = _configuration.GetSection("MailkitOptions").Get<MailKitOptionDto>() ?? new();
 
     }
 

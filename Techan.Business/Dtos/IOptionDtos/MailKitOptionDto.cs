@@ -1,8 +1,6 @@
-﻿using Techan.Core.Abstractions;
+﻿namespace Techan.Business.Dtos;
 
-namespace Techan.Business.Dtos;
-
-public class MailKitConfigurationDto : IDto
+public class MailKitOptionDto : IDto
 {
     public string Mail { get; set; } = null!;
     public string Password { get; set; } = null!;

@@ -1,14 +1,13 @@
 using Techan.Business.ServiceRegistrations;
 using Techan.DataAccess.ServiceRegistrations;
 using Techan.Presentation.Extensions;
-using Scalar.AspNetCore;
 
 
 namespace Techan.Presentation;
 
 public class Program
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
@@ -20,12 +19,12 @@ public class Program
 
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
-        
-        
+
+
 
         builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-        builder.Services.AddBusinessServices();
+        builder.Services.AddBusinessServices(builder.Configuration);
         builder.Services.AddDataAccessServices(builder.Configuration);
 
 
@@ -40,6 +39,8 @@ public class Program
         if (!app.Environment.IsDevelopment())
             app.UseMiddleware<GlobalExceptionHandler>();
 
+        await app.InitDatabaseAsync();
+
         app.UseHttpsRedirection();
 
         app.UseAuthorization();
@@ -51,6 +52,8 @@ public class Program
 
         app.MapControllers();
 
-        app.Run();
+        await app.RunAsync();
     }
+
+
 }
