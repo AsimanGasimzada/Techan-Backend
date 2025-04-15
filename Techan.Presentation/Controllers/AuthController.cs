@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 using Techan.Business.Dtos.AuthDtos;
 using Techan.Business.Services.Abstractions;
 
@@ -18,13 +19,23 @@ public class AuthController : ControllerBase
     {
         var result = await _service.LoginAsync(dto);
 
+        
+
+        return Ok(result);
+    }
+
+    [HttpGet("[action]")]
+    public async Task<IActionResult> GetAdminTokenForDevelopment()
+    {
+        var result = await _service.LoginAsync(new() { UsernameOrEmail = "Admin", Password = "Admin2003!" });
+
         return Ok(result);
     }
 
     [HttpPost("Register")]
-    public async Task<IActionResult > Register([FromBody]RegisterDto dto)
+    public async Task<IActionResult> Register([FromBody] RegisterDto dto)
     {
-        var result=await _service.RegisterAsync(dto);
+        var result = await _service.RegisterAsync(dto);
 
         return Ok(result);
     }

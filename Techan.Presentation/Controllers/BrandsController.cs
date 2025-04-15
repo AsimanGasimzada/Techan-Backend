@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Techan.Business.Dtos;
 using Techan.Business.Services.Abstractions;
-using Techan.Core.Enums;
 
 namespace Techan.Presentation.Controllers;
 [Route("[controller]")]
 [ApiController]
+[Authorize]
 public class BrandsController : ControllerBase
 {
     private readonly IBrandService _service;
@@ -24,6 +26,7 @@ public class BrandsController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [Authorize(Roles ="Admin")]
     public async Task<ActionResult<ResultDto<BrandGetDto>>> Get(int id)
     {
         var result = await _service.GetAsync(id);
@@ -31,7 +34,6 @@ public class BrandsController : ControllerBase
     }
 
     [HttpPost]
-    [Consumes("multipart/form-data")]
     public async Task<IActionResult> Create([FromForm] BrandCreateDto dto)
     {
         var result = await _service.CreateAsync(dto);

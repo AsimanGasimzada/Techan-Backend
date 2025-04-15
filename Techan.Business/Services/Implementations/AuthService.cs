@@ -49,6 +49,7 @@ internal class AuthService : IAuthService
             throw new LoginException(_errorLocalizer.GetValue(nameof(LoginException)));
         }
 
+        await GenerateUserClaimsAsync(user);
         var claims = (await _userManager.GetClaimsAsync(user)).ToList();
 
         var token = _tokenHelper.CreateToken(claims);
