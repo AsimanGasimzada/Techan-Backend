@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using System.Security.Claims;
 using Techan.Business.Dtos.AuthDtos;
 using Techan.Business.Exceptions;
@@ -54,6 +54,8 @@ internal class AuthService : IAuthService
 
         var token = _tokenHelper.CreateToken(claims);
 
+        await _updateUserRefreshTokenAsync(user, token);
+
         return new(token);
     }
 
@@ -80,10 +82,39 @@ internal class AuthService : IAuthService
 
         var claims = await GenerateUserClaimsAsync(appUser);
 
-        var tokenDto = _tokenHelper.CreateToken(claims);
+        var token = _tokenHelper.CreateToken(claims);
 
-        return new(tokenDto);
+        await _updateUserRefreshTokenAsync(appUser, token);
+
+        return new(token);
     }
+
+    public async Task<ResultDto<AccessTokenDto>> RefreshTokenAsync(string refreshToken)
+    {
+        var user = await _userManager.Users.FirstOrDefaultAsync(x => x.RefreshToken == refreshToken);
+        if (user is null)
+            throw new NotFoundException("User is not found!");
+
+        if (user.RefreshTokenExpiredAt < DateTime.UtcNow)
+            throw new LoginException("Token is expired at");
+
+        var claims = (await _userManager.GetClaimsAsync(user)).ToList();
+
+        var accessToken = _tokenHelper.CreateToken(claims);
+
+        await _updateUserRefreshTokenAsync(user, accessToken);
+
+        return new(accessToken);
+    }
+
+    private async Task _updateUserRefreshTokenAsync(AppUser user, AccessTokenDto accessToken)
+    {
+        user.RefreshToken = accessToken.RefreshToken;
+        user.RefreshTokenExpiredAt = accessToken.RefreshTokenExpiredAt;
+
+        await _userManager.UpdateAsync(user);
+    }
+
     private async Task<List<Claim>> GenerateUserClaimsAsync(AppUser user)
     {
         var oldClaims = await _userManager.GetClaimsAsync(user);
