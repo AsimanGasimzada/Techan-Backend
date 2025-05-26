@@ -75,9 +75,15 @@ internal abstract class Repository<T> : IRepository<T> where T : BaseEntity
         return result;
     }
 
-    public async Task<int> SaveChangesAsync()
+    public async Task<int> SaveChangesAsync(bool bypassInterceptor = false)
     {
-        return await _context.SaveChangesAsync();
+        _context.BypassAuditableInterceptor = bypassInterceptor;
+
+        var result = await _context.SaveChangesAsync();
+
+        _context.BypassAuditableInterceptor = false;
+
+        return result;
     }
 
     public T Update(T entity)

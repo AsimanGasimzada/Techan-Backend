@@ -6,6 +6,7 @@ namespace Techan.DataAccess.Contexts;
 internal class AppDbContext : IdentityDbContext<AppUser>
 {
     private readonly BaseAuditableInterceptor _interceptor;
+    public bool BypassAuditableInterceptor { get; set; } = false;
     public AppDbContext(DbContextOptions options, BaseAuditableInterceptor interceptor) : base(options)
     {
         _interceptor = interceptor;

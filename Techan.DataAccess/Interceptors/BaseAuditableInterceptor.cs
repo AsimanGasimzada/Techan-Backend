@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using System.Security.Claims;
 using Techan.Core.Entities.Common;
+using Techan.DataAccess.Contexts;
 
 namespace Techan.DataAccess.Interceptors;
 internal class BaseAuditableInterceptor : SaveChangesInterceptor
@@ -29,13 +30,16 @@ internal class BaseAuditableInterceptor : SaveChangesInterceptor
     {
         if (context is null) return;
 
+        if (context is AppDbContext appDbContext && appDbContext.BypassAuditableInterceptor)
+            return;
+
         foreach (var entry in context.ChangeTracker.Entries<BaseAuditableEntity>())
         {
             var username = _contextAccessor.HttpContext?.User.FindFirst(ClaimTypes.Name)?.Value ?? "undefined";
 
             if (entry.State == EntityState.Added)
             {
-                entry.Entity.CreatedDate= DateTime.UtcNow;
+                entry.Entity.CreatedDate = DateTime.UtcNow;
                 entry.Entity.CreatedBy = username;
                 entry.Entity.IsDeleted = false;
             }

@@ -1,5 +1,4 @@
-﻿using Azure.Core;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -32,6 +31,7 @@ internal class JwtHelper : ITokenHelper
     private AccessTokenDto CreateAccessToken(JwtSecurityToken jwtToken)
     {
         JwtSecurityTokenHandler jwtSecurityTokenHandler = new();
+
         return new()
         {
             Token = jwtSecurityTokenHandler.WriteToken(jwtToken),

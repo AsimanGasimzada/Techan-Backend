@@ -27,11 +27,7 @@ internal class EmailService : IEmailService
 
         email.Subject = dto.Subject;
 
-
-
-
         var builder = new BodyBuilder();
-
 
         if (dto.Attachments != null && dto.Attachments.Count > 0)
         {
